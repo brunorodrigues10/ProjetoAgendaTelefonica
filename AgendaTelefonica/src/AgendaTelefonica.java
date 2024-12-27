@@ -53,18 +53,25 @@ public class AgendaTelefonica {
                             encontrado = true;
                             break;
                         }
+                        if (!encontrado){
+                            System.out.println("Contato não encontrado!");
+                            break;
+                        }
                     }
 
                 case 4:
                     System.out.println("Digite o nome do contato que deseja remover: ");
                     String remover = scanner.nextLine();
-                    encontrado = false;
+                    boolean removido = false;
                     for (Contato contato : contatos) {
                         if (contato.getNome().equalsIgnoreCase(remover)) {
                             contatos.remove(contato);
                             System.out.println("Contato removido com sucesso!");
-                            encontrado = true;
+                            removido = true;
                             break;
+                        }
+                        if (!removido) {
+                            System.out.println("Contato não encontrado.");
                         }
                     }
                 case 5:
