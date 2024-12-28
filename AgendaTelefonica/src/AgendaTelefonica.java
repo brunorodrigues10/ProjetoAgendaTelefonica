@@ -8,81 +8,71 @@ public class AgendaTelefonica {
         ArrayList<Contato> contatos = new ArrayList<>();
 
         Scanner scanner = new Scanner(System.in);
-        int opcao;
 
-        do {
+        boolean executando = true;
+
+        while (executando) {
             System.out.println("\n=== Agenda Telefônica ===");
             System.out.println("1. Adicionar contato");
             System.out.println("2. Listar contatos");
             System.out.println("3. Buscar contato");
             System.out.println("4. Remover contato");
             System.out.println("5. Sair");
-            System.out.println("Escolha uma opção: ");
-            opcao = scanner.nextInt();
+            System.out.print("Escolha uma opção: ");
+            int opcao = scanner.nextInt();
             scanner.nextLine();
 
-
-            switch (opcao) {
-                case 1:
-                    System.out.println("Digite o nome do seu contato: ");
-                    String nome = scanner.nextLine();
-                    System.out.println("Digite o número do contato: ");
-                    String telefone = scanner.nextLine();
-                    contatos.add(new Contato(nome, telefone));
-                    System.out.println("Seu contato foi cadastrado com sucesso!");
-                    break;
-
-                case 2:
-                    System.out.println("Lista de contados: ");
-                    if (contatos.isEmpty()) {
-                        System.out.println("A lista está vazia");
-                    } else {
-                        for (Contato contato : contatos) {
-                            System.out.println(contato);
-                        }
-                    }
-                    break;
-
-                case 3:
-                    System.out.println("Digite o nome do contato de deseja buscar: ");
-                    String buscar = scanner.nextLine();
-                    boolean encontrado = false;
+            if (opcao == 1) {
+                System.out.print("Digite o nome do contato: ");
+                String nome = scanner.nextLine();
+                System.out.print("Digite o telefone do contato: ");
+                String telefone = scanner.nextLine();
+                contatos.add(new Contato(nome, telefone));
+                System.out.println("Contato adicionado com sucesso!");
+            } else if (opcao == 2) {
+                if (contatos.isEmpty()) {
+                    System.out.println("A lista de contatos está vazia.");
+                } else {
                     for (Contato contato : contatos) {
-                        if (contato.getNome().equalsIgnoreCase(buscar)) {
-                            System.out.println("Contato encontrado: " + contato);
-                            encontrado = true;
-                            break;
-                        }
-                        if (!encontrado){
-                            System.out.println("Contato não encontrado!");
-                            break;
-                        }
+                        System.out.println(contato);
                     }
-
-                case 4:
-                    System.out.println("Digite o nome do contato que deseja remover: ");
-                    String remover = scanner.nextLine();
-                    boolean removido = false;
-                    for (Contato contato : contatos) {
-                        if (contato.getNome().equalsIgnoreCase(remover)) {
-                            contatos.remove(contato);
-                            System.out.println("Contato removido com sucesso!");
-                            removido = true;
-                            break;
-                        }
-                        if (!removido) {
-                            System.out.println("Contato não encontrado.");
-                        }
+                }
+            } else if (opcao == 3) {
+                System.out.print("Digite o nome do contato que deseja buscar: ");
+                String busca = scanner.nextLine();
+                boolean encontrado = false;
+                for (Contato contato : contatos) {
+                    if (contato.getNome().equalsIgnoreCase(busca)) {
+                        System.out.println("Contato encontrado: " + contato);
+                        encontrado = true;
+                        break;
                     }
-                case 5:
-                    System.out.println("Saindo....");
-                    break;
-
-                default:
-                    System.out.println("Opção inválida. Tente novamente.");
+                }
+                if (!encontrado) {
+                    System.out.println("Contato não encontrado.");
+                }
+            } else if (opcao == 4) {
+                System.out.print("Digite o nome do contato que deseja remover: ");
+                String remover = scanner.nextLine();
+                boolean removido = false;
+                for (Contato contato : contatos) {
+                    if (contato.getNome().equalsIgnoreCase(remover)) {
+                        contatos.remove(contato);
+                        System.out.println("Contato removido com sucesso!");
+                        removido = true;
+                        break;
+                    }
+                }
+                if (!removido) {
+                    System.out.println("Contato não encontrado.");
+                }
+            } else if (opcao == 5) {
+                System.out.println("Saindo...");
+                executando = false;
+            } else {
+                System.out.println("Opção inválida. Tente novamente.");
             }
-        }while (opcao != 5);
-
+        }
         scanner.close();
     }
 }
