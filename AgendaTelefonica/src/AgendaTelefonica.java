@@ -46,10 +46,10 @@ public class AgendaTelefonica {
                         System.out.println("Contato encontrado: " + contato);
                         encontrado = true;
                         break;
+                    }else {
+                        System.out.println("Contato não encontrado");
+                        break;
                     }
-                }
-                if (!encontrado) {
-                    System.out.println("Contato não encontrado.");
                 }
             } else if (opcao == 4) {
                 System.out.print("Digite o nome do contato que deseja remover: ");
