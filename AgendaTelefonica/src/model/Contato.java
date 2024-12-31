@@ -1,4 +1,4 @@
-package agenda;
+package model;
 
 public class Contato {
     private String nome;
