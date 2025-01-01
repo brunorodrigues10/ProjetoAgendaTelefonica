@@ -17,8 +17,12 @@ public class AgendaController {
     public void adicionarContato() {
         String nome = view.solicitarEntrada("Digite o nome do contato: ");
         String telefone = view.solicitarEntrada("Digite o telefone do contato: ");
-        contatos.add(new Contato(nome, telefone));
-        view.exibirMensagem("Contato adicionado com sucesso!");
+
+        //Validação
+        if (validarContato(nome, telefone)) {
+            contatos.add(new Contato(nome, telefone));
+            view.exibirMensagem("Contato adicionado com sucesso!");
+        }
     }
 
     public void listarContatos() {
@@ -52,5 +56,17 @@ public class AgendaController {
             }
         }
         view.exibirMensagem("Contato não encontrado.");
+    }
+
+    private boolean validarContato(String nome, String telefone) {
+        if(nome == null || nome.trim().isEmpty()) {
+            view.exibirMensagem("Erro: Você precisa informar um nome.");
+            return false;
+        }
+        if (!telefone.matches("\\d+")) {
+            view.exibirMensagem("Erro: O telefone deve conter apenas números (ex.: 1234567890)");
+            return false;
+        }
+        return true;
     }
 }

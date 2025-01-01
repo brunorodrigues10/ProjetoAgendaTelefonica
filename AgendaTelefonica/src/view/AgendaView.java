@@ -1,5 +1,6 @@
 package view;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class AgendaView {
@@ -29,8 +30,18 @@ public class AgendaView {
     }
 
     public int solicitarOpcao() {
-        int opcao = scanner.nextInt();
-        scanner.nextLine(); // Limpar o buffer
+        int opcao = -1;
+        while (true) {
+            try{
+                System.out.println("Escolha uma opção: ");
+                opcao = scanner.nextInt();
+                scanner.nextLine();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Erro: Por favor, digite um número válido.");
+                scanner.nextLine();
+            }
+        }
         return opcao;
     }
 }
