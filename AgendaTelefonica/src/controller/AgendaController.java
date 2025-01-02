@@ -51,6 +51,17 @@ public class AgendaController {
         view.exibirMensagem("Contato não encontrado.");
     }
 
+    public void buscarTelefone() {
+        String buscartelefone = view.solicitarEntrada("Digite o telefone que deseja buscar: ");
+        for (Contato contato : contatos){
+            if (contato.getTelefone().equalsIgnoreCase(buscartelefone)) {
+                view.exibirMensagem("Contato encontrado: " + contato);
+                return;
+            }
+        }
+        view.exibirMensagem("Contato não encontrado.");
+    }
+
     public void removerContato() {
         String remover = view.solicitarEntrada("Digite o nome do contato que deseja remover: ");
         for (Contato contato : contatos) {

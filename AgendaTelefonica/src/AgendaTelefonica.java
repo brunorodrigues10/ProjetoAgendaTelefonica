@@ -16,8 +16,9 @@ public class AgendaTelefonica {
                 case 1 -> controller.adicionarContato();
                 case 2 -> controller.listarContatos();
                 case 3 -> controller.buscarContato();
-                case 4 -> controller.removerContato();
-                case 5 -> {
+                case 4 -> controller.buscarTelefone();
+                case 5 -> controller.removerContato();
+                case 6 -> {
                     view.exibirMensagem("Saindo...");
                     executando = false;
                 }

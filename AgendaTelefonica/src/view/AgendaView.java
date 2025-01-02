@@ -15,8 +15,9 @@ public class AgendaView {
         System.out.println("1. Adicionar contato");
         System.out.println("2. Listar contatos");
         System.out.println("3. Buscar contato");
-        System.out.println("4. Remover contato");
-        System.out.println("5. Sair");
+        System.out.println("4. Buscar contato por telefone");
+        System.out.println("5. Remover contato");
+        System.out.println("6. Sair");
         System.out.print("Escolha uma opção: ");
     }
 
