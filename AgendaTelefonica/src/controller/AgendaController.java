@@ -4,6 +4,7 @@ import model.Contato;
 import view.AgendaView;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class AgendaController {
     private ArrayList<Contato> contatos;
@@ -29,6 +30,10 @@ public class AgendaController {
         if (contatos.isEmpty()) {
             view.exibirMensagem("A lista de contatos está vazia.");
         } else {
+            // Ordena os contatos por nome antes de exibi-los
+            contatos.sort(Comparator.comparing(Contato::getNome));
+
+            // Exibe os contatos ordenados
             for (Contato contato : contatos) {
                 view.exibirMensagem(contato.toString());
             }
