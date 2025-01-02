@@ -19,6 +19,17 @@ public class AgendaController {
         String nome = view.solicitarEntrada("Digite o nome do contato: ");
         String telefone = view.solicitarEntrada("Digite o telefone do contato: ");
 
+        for (Contato contato : contatos) {
+            if (contato.getNome().equalsIgnoreCase(nome)){
+                System.out.println("Erro: Já existe um contato com este nome.");
+                return;
+            }
+            if (contato.getTelefone().equalsIgnoreCase(telefone)) {
+                System.out.println("Erro: Número de telefone já cadastrado");
+                return;
+            }
+        }
+
         //Validação
         if (validarContato(nome, telefone)) {
             contatos.add(new Contato(nome, telefone));
